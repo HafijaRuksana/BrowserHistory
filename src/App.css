@@ -10,3 +10,57 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.history-app {
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  align-items: center;
+}
+.navbar-container {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+
+  padding: 10px;
+  background-color: #3367d6;
+  width: 100%;
+}
+.history-image {
+  height: 35px;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.input-element {
+  border-color: #f8fafc;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #6697ff;
+  color: #ffffff;
+  outline: none;
+  height: 30px;
+}
+.search-image {
+  border-color: #ffffff;
+  border-width: 1px;
+  background-color: #6697ff;
+  height: 30px;
+  border-style: solid;
+}
+.history-card {
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+.ul-list {
+  list-style-type: none;
+}
+.no-history {
+  text-align: center;
+}

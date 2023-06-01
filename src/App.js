@@ -1,3 +1,5 @@
+import {Component} from 'react'
+import GetHistory from './GetHistory'
 import './App.css'
 
 // These are the list used in the application. You can move them to any component needed.
@@ -77,6 +79,66 @@ const initialHistoryList = [
 ]
 
 // Replace your code here
-const App = () => <div>Hello World</div>
+class App extends Component {
+  state = {searchInput: '', historyList: initialHistoryList}
+
+  onDelete = id => {
+    const {historyList} = this.state
+    const filteredList = historyList.filter(eachItem => eachItem.id !== id)
+    this.setState({historyList: filteredList})
+  }
+
+  onChangeInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  render() {
+    const {searchInput, historyList} = this.state
+    const searchResults = historyList.filter(eachHistory =>
+      eachHistory.title.toLowerCase().includes(searchInput.toLowerCase()),
+    )
+
+    return (
+      <div className="history-app">
+        <div className="navbar-container">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/history-website-logo-img.png"
+            alt="app logo"
+            className="history-image"
+          />
+          <div className="input-container">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/search-img.png"
+              alt="search"
+              className="search-image"
+            />
+            <input
+              type="search"
+              placeholder="Search history"
+              className="input-element"
+              value={searchInput}
+              onChange={this.onChangeInput}
+            />
+          </div>
+        </div>
+        <div className="history-card">
+          {searchResults.length > 0 ? (
+            <ul className="ul-list">
+              {searchResults.map(eachItem => (
+                <GetHistory
+                  onDeleteItem={this.onDelete}
+                  itemDetails={eachItem}
+                  key={eachItem.id}
+                />
+              ))}
+            </ul>
+          ) : (
+            <p className="no-history">There is no history to show</p>
+          )}
+        </div>
+      </div>
+    )
+  }
+}
 
 export default App
